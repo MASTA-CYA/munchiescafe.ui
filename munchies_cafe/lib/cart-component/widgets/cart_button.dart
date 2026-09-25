@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+import 'package:munchies_cafe/common/constants.dart';
+
+class CartButtonWidget extends StatelessWidget {
+  final Widget icon;
+  final String text;
+  final Color? color;
+  final bool? isPrimary;
+  final VoidCallback onClicked;
+
+  const CartButtonWidget({
+    Key? key,
+    required this.icon,
+    required this.text,
+    this.color,
+    this.isPrimary = true,
+    required this.onClicked,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: isPrimary!
+            ? Theme.of(context)
+                .elevatedButtonTheme
+                .style
+                ?.backgroundColor
+                ?.resolve({MaterialState.pressed})
+            : Theme.of(context).scaffoldBackgroundColor,
+        surfaceTintColor:   Colors.transparent,
+        foregroundColor:
+            color ?? (isPrimary! ? Colors.white : Theme.of(context).primaryColor),
+        shape: StadiumBorder(
+          side: BorderSide(color: color ?? Theme.of(context).primaryColor),
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 18,
+          vertical: 6,
+        ),
+      ),
+      icon: icon,
+      label: Container(
+        margin: const EdgeInsets.only(top: 6),
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontFamily: FontFamily.PRIMARY,
+            fontSize: 18,
+          ),
+        ),
+      ),
+      onPressed: onClicked,
+    );
+  }
+}
