@@ -1,0 +1,27 @@
+# Repository-wide ignores. The Flutter app has its own, more specific
+# rules in munchies_cafe/.gitignore and in each platform folder.
+
+# Operating system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Editors and IDEs
+.idea/
+*.iml
+*.swp
+*~
+
+# Build outputs: publish APKs and app bundles as GitHub Release assets, never commit them
+*.apk
+*.aab
+*.ipa
+
+# Signing keys and secrets
+*.jks
+*.keystore
+key.properties
+.env
+.env.*

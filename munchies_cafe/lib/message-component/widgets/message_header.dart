@@ -38,9 +38,7 @@ class _MessageHeaderWidgetState extends State<MessageHeaderWidget> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-      color: Theme.of(context).brightness == Brightness.light
-          ? ColorHelper.lighten(Theme.of(context).colorScheme.secondary, 70)
-          : Theme.of(context).colorScheme.secondary.withOpacity(0.4),
+      color: ColorHelper.lighten(Theme.of(context).colorScheme.secondary, 70),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -58,7 +56,7 @@ class _MessageHeaderWidgetState extends State<MessageHeaderWidget> {
         child: Text(
           widget.heading,
           style: Theme.of(context).textTheme.titleMedium?.merge(
-                const TextStyle(fontFamily: FontFamily.PRIMARY),
+                const TextStyle(fontFamily: FontFamily.primary),
               ),
         ),
       ),

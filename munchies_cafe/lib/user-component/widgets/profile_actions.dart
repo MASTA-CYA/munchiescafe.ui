@@ -45,7 +45,7 @@ class ProfileActionsWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.labelSmall?.merge(
                 TextStyle(
                   color: Theme.of(context).colorScheme.onPrimary,
-                  fontFamily: FontFamily.PRIMARY,
+                  fontFamily: FontFamily.primary,
                 ),
               ),
         ),

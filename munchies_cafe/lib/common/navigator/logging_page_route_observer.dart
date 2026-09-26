@@ -60,23 +60,11 @@ class LoggingPageRouteObserver extends RouteObserver<PageRoute<dynamic>> {
     String? oldRoute,
     RouterAction action,
   ) {
-    String line;
-    switch (action) {
-      case RouterAction.push:
-        line = 'Navigated from $oldRoute to $newRoute';
-        break;
-      case RouterAction.pop:
-        line = 'Navigated from $newRoute to $oldRoute';
-        break;
-      case RouterAction.replace:
-        line = 'Replaced route $oldRoute with $newRoute';
-        break;
-      default:
-        line = 'Unknown navigation action';
-        break;
-    }
-
-    return line;
+    return switch (action) {
+      RouterAction.push => 'Navigated from $oldRoute to $newRoute',
+      RouterAction.pop => 'Navigated from $newRoute to $oldRoute',
+      RouterAction.replace => 'Replaced route $oldRoute with $newRoute',
+    };
   }
 }
 

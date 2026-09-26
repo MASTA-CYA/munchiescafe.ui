@@ -9,7 +9,7 @@ import 'package:munchies_cafe/common/navigator/page_navigator.dart';
 import 'package:munchies_cafe/common/navigator/transition_direction_enum.dart';
 import 'package:munchies_cafe/common/notifications/enums/notification_type_enum.dart';
 import 'package:munchies_cafe/common/notifications/notification_scaffold.dart';
-import 'package:munchies_cafe/common/themes/themes_common.dart';
+import 'package:munchies_cafe/common/theme/app_theme.dart';
 import 'package:munchies_cafe/common/widgets/appbar.dart';
 import 'package:munchies_cafe/common/widgets/drawer/custom_navigation_drawer.dart';
 import 'package:munchies_cafe/common/widgets/page_background.dart';
@@ -158,7 +158,7 @@ class _MenuPage extends State<MenuPage> {
         variations: [
           ProductVariation(
             name: 'Chocolate',
-            color: ThemesCommon.primaryColor,
+            color: AppColors.primary,
           ),
           ProductVariation(
             name: 'Vanilla',
@@ -219,8 +219,7 @@ class _MenuPage extends State<MenuPage> {
       children: [
         Row(
           children: [
-            Expanded(flex: 2, child: _buildMusicCategories()),
-            // Flexible(child: _buildSearchIcon())
+            Expanded(flex: 2, child: _buildMenuCategories()),
           ],
         ),
         const SizedBox(height: 6),
@@ -232,7 +231,7 @@ class _MenuPage extends State<MenuPage> {
     );
   }
 
-  Widget _buildMusicCategories() {
+  Widget _buildMenuCategories() {
     final double maxHeight = MediaQuery.of(context).size.height * 0.06;
 
     return ConstrainedBox(
@@ -252,9 +251,9 @@ class _MenuPage extends State<MenuPage> {
             },
           ),
           onNotification: (notification) =>
-              _onMusicCategoryScroll(notification),
+              _onCategoryScroll(notification),
         ),
-        onNotification: (notification) => _onMusicCategoryScroll(notification),
+        onNotification: (notification) => _onCategoryScroll(notification),
       ),
     );
   }
@@ -325,7 +324,7 @@ class _MenuPage extends State<MenuPage> {
     setState(() {});
   }
 
-  bool _onMusicCategoryScroll(ScrollNotification notification) {
+  bool _onCategoryScroll(ScrollNotification notification) {
     const bool isNotificationHandled = true;
 
     if (notification is ScrollStartNotification) {

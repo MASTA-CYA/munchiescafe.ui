@@ -1,8 +1,5 @@
 import 'package:munchies_cafe/common/constants.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:munchies_cafe/common/helpers/color_helper.dart'
-    as colorHelper;
 
 class NavigatorButtonWidget extends StatelessWidget {
   final String text;
@@ -11,12 +8,12 @@ class NavigatorButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
   const NavigatorButtonWidget({
-    Key? key,
+    super.key,
     required this.text,
     this.color,
     this.isPrimary = true,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +24,8 @@ class NavigatorButtonWidget extends StatelessWidget {
                 .elevatedButtonTheme
                 .style
                 ?.backgroundColor
-                ?.resolve({MaterialState.pressed})
-            : Theme.of(context).colorScheme.background,
+                ?.resolve({WidgetState.pressed})
+            : Theme.of(context).colorScheme.surface,
         surfaceTintColor: Colors.transparent,
         foregroundColor: color ??
             (isPrimary! ? Colors.white : Theme.of(context).primaryColor),
@@ -44,7 +41,7 @@ class NavigatorButtonWidget extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-          fontFamily: FontFamily.PRIMARY,
+          fontFamily: FontFamily.primary,
           fontSize: 18,
         ),
       ),

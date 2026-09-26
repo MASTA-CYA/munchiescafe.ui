@@ -25,7 +25,7 @@ class NoMessagesWidget extends StatelessWidget {
         Text(
           'NO NEW MESSAGES',
           style: Theme.of(context).textTheme.titleLarge?.merge(
-                const TextStyle(fontFamily: FontFamily.PRIMARY),
+                const TextStyle(fontFamily: FontFamily.primary),
               ),
         ),
       ],

@@ -11,14 +11,9 @@ class SharedPreferencesService {
 
   static final SharedPreferencesService _instance =
       SharedPreferencesService._internal();
-  // using a factory is important
-  // because it promises to return _an_ object of this type
   factory SharedPreferencesService() {
     return _instance;
   }
-  // This named constructor is the "real" constructor
-  // It'll be called exactly once, by the static property assignment above
-  // it's also private, so it can only be called in this class
   SharedPreferencesService._internal();
 
   Future _initPreferences() async {

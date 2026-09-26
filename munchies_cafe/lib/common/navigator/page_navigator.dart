@@ -6,10 +6,8 @@ import 'package:munchies_cafe/common/logger/models/log_event_model.dart';
 import 'package:munchies_cafe/common/navigator/page_route.dart';
 import 'package:munchies_cafe/common/navigator/page_route_helper.dart';
 import 'package:munchies_cafe/common/navigator/transition_direction_enum.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 
 class PageNavigator {
   static void navigateTo<T>(
@@ -27,7 +25,7 @@ class PageNavigator {
     if (currentPage?.equals('/'
             '${widget.runtimeType.toString()}') ??
         false) {
-      await _logNavigation<T>(isExitCommand: false);
+      await _logNavigation<T>();
       return;
     }
 
@@ -75,13 +73,6 @@ class PageNavigator {
     }
   }
 
-  static void exitApplication<T>() async {
-    await _logNavigation<T>(isExitCommand: true);
-    await SystemNavigator.pop(
-      animated: defaultTargetPlatform == TargetPlatform.iOS,
-    );
-  }
-
   static Future<void> _doNavigation(
     BuildContext context,
     Widget widget,
@@ -123,16 +114,12 @@ class PageNavigator {
     return PageRouteHelper.generateRestorableRoute(context, params);
   }
 
-  static Future<void> _logNavigation<T>({
-    bool isExitCommand = false,
-  }) async {
+  static Future<void> _logNavigation<T>() async {
     await Logger.logAsync(
       LogEvent<PageNavigator>(
         severity: Severity.information,
         tag: Tag.application,
-        line: isExitCommand
-            ? 'Attempting to gracefully exit application'
-            : 'Navigation short-circuited for page: $T',
+        line: 'Navigation short-circuited for page: $T',
       ),
     );
   }

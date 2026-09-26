@@ -16,7 +16,7 @@ import 'package:munchies_cafe/message-component/models/notification_model.dart';
 import 'package:flutter/material.dart';
 
 class MessageService with ChangeNotifier implements PersistableService {
-  static const String _MESSAGES_KEY = 'MESSAGES_KEY';
+  static const String _messagesKey = 'MESSAGES_KEY';
 
   late SharedPreferencesService _preferences;
   late List<SerializableModel<Message>> _messages;
@@ -26,14 +26,9 @@ class MessageService with ChangeNotifier implements PersistableService {
       _notificationStreamController.stream;
 
   static final MessageService _instance = MessageService._internal();
-  // using a factory is important
-  // because it promises to return _an_ object of this type
   factory MessageService() {
     return _instance;
   }
-  // This named constructor is the "real" constructor
-  // It'll be called exactly once, by the static property assignment above
-  // it's also private, so it can only be called in this class
   MessageService._internal() {
     _init();
   }
@@ -47,10 +42,10 @@ class MessageService with ChangeNotifier implements PersistableService {
 
     try {
       _messages = Message.decode(
-        await _preferences.readAsync(_MESSAGES_KEY),
+        await _preferences.readAsync(_messagesKey),
       );
     } on Exception catch (ex) {
-      // Attempt to use Eternal storage
+      // Fall back to the copy saved in file storage
       String? result = await FileStorageService.readAsync<MessageService>();
       if (!result.isNull) {
         _messages = Message.decode(result!);
@@ -215,7 +210,7 @@ class MessageService with ChangeNotifier implements PersistableService {
   
   Future<void> _saveToPreferences() async {
     try {
-      await _preferences.saveAsync(_MESSAGES_KEY,
+      await _preferences.saveAsync(_messagesKey,
           Message.encode(_messages.map((e) => e.model).toList()));
     } on Exception catch (ex) {
       await Logger.logAsync(

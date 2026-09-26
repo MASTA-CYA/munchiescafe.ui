@@ -37,11 +37,7 @@ class MessageActionsWidget extends StatelessWidget {
             ? onReportPressed
             : null,
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-            (states) => Theme.of(context).brightness == Brightness.dark
-                ? Colors.white
-                : Colors.black,
-          ),
+          foregroundColor: WidgetStateProperty.all<Color?>(Colors.black),
         ),
         child: Text(
           'Report',

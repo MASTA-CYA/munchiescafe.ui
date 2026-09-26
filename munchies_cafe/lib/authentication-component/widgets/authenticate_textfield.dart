@@ -71,7 +71,7 @@ class _AuthenticateTextFieldWidgetState
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(1),
         ),
-        fillColor: Colors.transparent.withOpacity(0),
+        fillColor: Colors.transparent.withValues(alpha: 0),
         filled: false,
       ),
 
@@ -80,9 +80,5 @@ class _AuthenticateTextFieldWidgetState
       maxLines: widget.maxLines,
       onChanged: widget.onChanged,
     );
-  }
-
-  String _getRegexString() {
-    return widget.allowDecimal ? r'[0-9]+[,.]{0,1}[0-9]*' : r'[0-9]';
   }
 }

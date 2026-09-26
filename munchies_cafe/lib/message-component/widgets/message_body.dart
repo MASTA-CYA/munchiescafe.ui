@@ -15,9 +15,7 @@ class MessageBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _borderSide = BorderSide(
-      color: Theme.of(context).brightness == Brightness.light
-          ? ColorHelper.lighten(Theme.of(context).colorScheme.secondary, 70)
-          : Theme.of(context).colorScheme.secondary.withOpacity(0.4),
+      color: ColorHelper.lighten(Theme.of(context).colorScheme.secondary, 70),
       width: 5,
     );
 

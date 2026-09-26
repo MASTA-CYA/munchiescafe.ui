@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:munchies_cafe/common/debouncer.dart';
-import 'package:munchies_cafe/common/extensions.dart';
 import 'package:munchies_cafe/common/notifications/notification_message.dart';
 import 'package:munchies_cafe/message-component/models/notification_model.dart';
 import 'package:flutter/material.dart';
@@ -66,14 +65,7 @@ class _NotificationMessageContainerWidget
         parent: _slideController,
         curve: Curves.easeInOut,
       ),
-    )..addListener(
-        () {
-          if (_slideAnimation.status.equals(AnimationStatus.dismissed)) {
-            // _canHideMessage = false;
-            // dispose();
-          }
-        },
-      );
+    );
 
     WidgetsBinding.instance.addPostFrameCallback(
       (_) async {
@@ -110,7 +102,7 @@ class _NotificationMessageContainerWidget
                 margin: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
-                  color: Theme.of(context).colorScheme.background,
+                  color: Theme.of(context).colorScheme.surface,
                   boxShadow: [
                     BoxShadow(
                       color: Theme.of(context).colorScheme.shadow,
@@ -168,7 +160,6 @@ class _NotificationMessageContainerWidget
           _canHideMessage = _slideAnimation.isCompleted;
           await _slideController.reverse();
           setState(() {});
-          // dispose();
         },
       );
     }

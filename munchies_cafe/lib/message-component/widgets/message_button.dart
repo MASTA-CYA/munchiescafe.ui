@@ -1,7 +1,5 @@
 import 'package:munchies_cafe/common/constants.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:munchies_cafe/common/helpers/color_helper.dart' as colorHelper;
 
 class MessageButtonWidget extends StatelessWidget {
   final Widget icon;
@@ -11,13 +9,13 @@ class MessageButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
   const MessageButtonWidget({
-    Key? key,
+    super.key,
     required this.icon,
     required this.text,
     this.color,
     this.isPrimary = true,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +26,8 @@ class MessageButtonWidget extends StatelessWidget {
                 .elevatedButtonTheme
                 .style
                 ?.backgroundColor
-                ?.resolve({MaterialState.pressed})
-            : Theme.of(context).colorScheme.background,
+                ?.resolve({WidgetState.pressed})
+            : Theme.of(context).colorScheme.surface,
         surfaceTintColor: Colors.transparent,
         foregroundColor: color ??
             (isPrimary! ? Colors.white : Theme.of(context).primaryColor),
@@ -45,7 +43,7 @@ class MessageButtonWidget extends StatelessWidget {
       label: Text(
         text,
         style: const TextStyle(
-          fontFamily: FontFamily.PRIMARY,
+          fontFamily: FontFamily.primary,
           fontSize: 18,
         ),
       ),

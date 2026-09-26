@@ -18,30 +18,12 @@ enum TransitionDirection {
 }
 
 extension TransitionDirectionExtension on TransitionDirection {
-  Offset get offset => _getOffset();
-
-  Offset _getOffset() {
-    Offset offset = const Offset(0.0, 0.0);
-
-    switch (this) {
-      case TransitionDirection.ltr:
-        offset = const Offset(1.0, 0.0);
-        break;
-      case TransitionDirection.rtl:
-        offset = const Offset(-1.0, 0.0);
-        break;
-      case TransitionDirection.ttb:
-        offset = const Offset(0.0, -1.0);
-        break;
-      case TransitionDirection.btt:
-        offset = const Offset(0.0, 1.0);
-        break;
-      default:
-        break;
-    }
-
-    return offset;
-  }
+  Offset get offset => switch (this) {
+        TransitionDirection.ltr => const Offset(1.0, 0.0),
+        TransitionDirection.rtl => const Offset(-1.0, 0.0),
+        TransitionDirection.ttb => const Offset(0.0, -1.0),
+        TransitionDirection.btt => const Offset(0.0, 1.0),
+      };
 
   static TransitionDirection getTransitionDirectionFromName(String name) {
     TransitionDirection direction;

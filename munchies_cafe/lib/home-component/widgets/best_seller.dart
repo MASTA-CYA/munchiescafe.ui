@@ -17,7 +17,7 @@ class BestSellerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: const [
           BoxShadow(
             offset: Offset.zero,
@@ -46,7 +46,7 @@ class BestSellerWidget extends StatelessWidget {
               product.name,
               style: Theme.of(context).textTheme.titleMedium?.merge(
                     TextStyle(
-                      fontFamily: FontFamily.PRIMARY,
+                      fontFamily: FontFamily.primary,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
@@ -75,7 +75,7 @@ class BestSellerWidget extends StatelessWidget {
           clipBehavior: Clip.antiAliasWithSaveLayer,
         ),
         Container(
-          color: Colors.transparent.withOpacity(0.45),
+          color: Colors.transparent.withValues(alpha: 0.45),
         ),
         _buildQuantity(context),
         _buildPrice(context),

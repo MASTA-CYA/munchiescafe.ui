@@ -49,7 +49,7 @@ class DrawerHeaderWidget extends StatelessWidget {
       'Angela Grasser',
       style: Theme.of(context).textTheme.titleLarge?.merge(
             const TextStyle(
-              fontFamily: FontFamily.PRIMARY,
+              fontFamily: FontFamily.primary,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),

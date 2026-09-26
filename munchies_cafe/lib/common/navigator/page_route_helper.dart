@@ -13,10 +13,6 @@ import 'package:munchies_cafe/message-component/messages_page.dart';
 import 'package:munchies_cafe/user-component/user_profile_page.dart';
 
 class PageRouteHelper {
-  static String getInitialRouteName() {
-    return _getPageRoutes().first.name;
-  }
-
   static Widget getInitialRouteWidget() {
     return _getPageRoutes().first.widget;
   }
@@ -48,17 +44,6 @@ class PageRouteHelper {
         widget: UserProfilePage(),
       ),
     ];
-  }
-
-  static Map<String, Widget Function(BuildContext)> getNamedPageRoutes() {
-    Map<String, Widget Function(BuildContext)> routes = {};
-    List<NamedPageRoute> pages = _getPageRoutes();
-
-    for (NamedPageRoute page in pages) {
-      routes.addAll({page.path: (context) => page.widget});
-    }
-
-    return routes;
   }
 
   static Route<dynamic>? onGenerateRoute(

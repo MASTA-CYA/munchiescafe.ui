@@ -1,6 +1,5 @@
 import 'package:munchies_cafe/common/extensions.dart';
 import 'package:munchies_cafe/common/logger/enums/severity_enum.dart';
-import 'package:flutter/foundation.dart';
 
 enum MessageSeverity {
   critical,
@@ -14,20 +13,16 @@ enum MessageSeverity {
 }
 
 extension MessageSeverityExtension on MessageSeverity {
-  String get name => describeEnum(this).capitalize();
-  String get serializableName => describeEnum(this);
-  static MessageSeverity messageSeverityFromLogEvent(Severity severity) {
-    switch (severity) {
-      case Severity.information:
-        return MessageSeverity.information;
-      case Severity.debug:
-        return MessageSeverity.alert;
-      case Severity.warning:
-        return MessageSeverity.warning;
-      case Severity.error:
-        return MessageSeverity.critical;
-      default:
-        return MessageSeverity.information;
-    }
-  }
+  // `name` is overridden by this extension, so read the enum's own name
+  // through dart:core's EnumName extension.
+  String get name => EnumName(this).name.capitalize();
+  String get serializableName => EnumName(this).name;
+
+  static MessageSeverity messageSeverityFromLogEvent(Severity severity) =>
+      switch (severity) {
+        Severity.information => MessageSeverity.information,
+        Severity.debug => MessageSeverity.alert,
+        Severity.warning => MessageSeverity.warning,
+        Severity.error => MessageSeverity.critical,
+      };
 }

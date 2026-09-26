@@ -23,12 +23,9 @@ class MessageInfoBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // margin: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Theme.of(context).brightness == Brightness.light
-              ? ColorHelper.lighten(Theme.of(context).colorScheme.secondary, 70)
-              : Theme.of(context).colorScheme.secondary.withOpacity(0.4),
+          color: ColorHelper.lighten(Theme.of(context).colorScheme.secondary, 70),
           width: 5,
         ),
       ),

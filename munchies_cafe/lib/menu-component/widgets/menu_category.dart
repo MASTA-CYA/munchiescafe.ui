@@ -1,6 +1,6 @@
 import 'package:munchies_cafe/common/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:munchies_cafe/common/themes/themes_common.dart';
+import 'package:munchies_cafe/common/theme/app_theme.dart';
 import 'package:munchies_cafe/menu-component/models/menu_category_filter_model.dart';
 
 class MenuCategoryWidget extends StatefulWidget {
@@ -31,8 +31,8 @@ class _CatalogueCategoryWidget extends State<MenuCategoryWidget>
       duration: const Duration(milliseconds: 200),
     );
     _animation = ColorTween(
-      begin: ThemesCommon.primaryColor,
-      end: ThemesCommon.primaryColor,
+      begin: AppColors.primary,
+      end: AppColors.primary,
     ).animate(_animationController);
 
     WidgetsBinding.instance.addPostFrameCallback(
@@ -65,7 +65,7 @@ class _CatalogueCategoryWidget extends State<MenuCategoryWidget>
                 widget.category.text,
                 style: Theme.of(context).textTheme.bodyLarge?.merge(
                       TextStyle(
-                        fontFamily: FontFamily.PRIMARY,
+                        fontFamily: FontFamily.primary,
                         color: _animation.value,
                         fontWeight: FontWeight.bold,
                       ),

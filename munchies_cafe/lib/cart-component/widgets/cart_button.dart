@@ -9,13 +9,13 @@ class CartButtonWidget extends StatelessWidget {
   final VoidCallback onClicked;
 
   const CartButtonWidget({
-    Key? key,
+    super.key,
     required this.icon,
     required this.text,
     this.color,
     this.isPrimary = true,
     required this.onClicked,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CartButtonWidget extends StatelessWidget {
                 .elevatedButtonTheme
                 .style
                 ?.backgroundColor
-                ?.resolve({MaterialState.pressed})
+                ?.resolve({WidgetState.pressed})
             : Theme.of(context).scaffoldBackgroundColor,
         surfaceTintColor:   Colors.transparent,
         foregroundColor:
@@ -45,7 +45,7 @@ class CartButtonWidget extends StatelessWidget {
         child: Text(
           text,
           style: const TextStyle(
-            fontFamily: FontFamily.PRIMARY,
+            fontFamily: FontFamily.primary,
             fontSize: 18,
           ),
         ),

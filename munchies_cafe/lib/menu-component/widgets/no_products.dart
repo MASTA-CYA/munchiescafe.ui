@@ -26,19 +26,11 @@ class NoProductsWidget extends StatelessWidget {
             ),
             color: null,
           ),
-          // ResizeImage(
-          //   AssetImage('assets/images/no-products.png'),
-          //   width: 1000,
-          //   height: 1000,
-          //   allowUpscaling: false,
-          // ),
-          // size: 150,
-          // ),
         ),
         Text(
           'NO ${category.toUpperCase()} FOUND',
           style: Theme.of(context).textTheme.titleLarge?.merge(
-                const TextStyle(fontFamily: FontFamily.PRIMARY),
+                const TextStyle(fontFamily: FontFamily.primary),
               ),
         ),
       ],

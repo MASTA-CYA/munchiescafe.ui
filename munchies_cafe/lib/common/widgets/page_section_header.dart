@@ -33,7 +33,7 @@ class _PageSectionHeaderWidgetState extends State<PageSectionHeaderWidget> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
-      color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+      color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.2),
       child: Row(
         children: [
           Expanded(
@@ -43,7 +43,7 @@ class _PageSectionHeaderWidgetState extends State<PageSectionHeaderWidget> {
                 widget.title,
                 style: Theme.of(context).textTheme.titleMedium?.merge(
                       TextStyle(
-                        fontFamily: FontFamily.PRIMARY,
+                        fontFamily: FontFamily.primary,
                         color:
                             _isExpanded ? Theme.of(context).primaryColor : null,
                       ),

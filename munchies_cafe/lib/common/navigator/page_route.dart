@@ -22,7 +22,7 @@ class AnimatedMaterialPageRoute<T> extends PageRoute {
     Animation<double> animation,
     Animation<double> secondaryAnimation,
   ) {
-    if (settings.name?.equals('/') ?? false) return this.widget;
+    if (settings.name?.equals('/') ?? false) return widget;
 
     Offset begin = direction.offset;
     const Offset end = Offset(0.0, 0.0);

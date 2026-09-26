@@ -1,5 +1,4 @@
 import 'package:munchies_cafe/common/extensions.dart';
-import 'package:flutter/foundation.dart';
 
 enum Tag {
   application,
@@ -24,7 +23,7 @@ extension TagExtension on Tag {
       case Tag.observer:
       case Tag.helper:
       case Tag.strategy:
-        return describeEnum(this).toUpperCase();
+        return EnumName(this).name.toUpperCase();
       default:
         return "UNKNOWN";
     }
@@ -40,7 +39,7 @@ extension TagExtension on Tag {
       case Tag.observer:
       case Tag.helper:
       case Tag.handler:
-        return describeEnum(this).capitalize();
+        return EnumName(this).name.capitalize();
       default:
         return "Unknown";
     }

@@ -61,7 +61,7 @@ class _UnknownRouteWidgetState extends State<UnknownRouteWidget>
         Text(
           'INVALID PAGE ROUTE',
           style: Theme.of(context).textTheme.titleLarge?.merge(
-                const TextStyle(fontFamily: FontFamily.PRIMARY),
+                const TextStyle(fontFamily: FontFamily.primary),
               ),
         ),
         const SizedBox(height: 20),

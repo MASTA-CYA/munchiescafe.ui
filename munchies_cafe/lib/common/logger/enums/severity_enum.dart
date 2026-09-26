@@ -1,5 +1,4 @@
 import 'package:munchies_cafe/common/extensions.dart';
-import 'package:flutter/foundation.dart';
 
 enum Severity {
   information,
@@ -9,33 +8,9 @@ enum Severity {
 }
 
 extension SeverityExtension on Severity {
-  String get name {
-    switch (this) {
-      case Severity.information:
-        return describeEnum(this).toUpperCase();
-      case Severity.debug:
-        return describeEnum(this).toUpperCase();
-      case Severity.warning:
-        return describeEnum(this).toUpperCase();
-      case Severity.error:
-        return describeEnum(this).toUpperCase();
-      default:
-        return "Unknown";
-    }
-  }
+  // `name` is overridden by this extension, so read the enum's own name
+  // through dart:core's EnumName extension.
+  String get name => EnumName(this).name.toUpperCase();
 
-  String get messageName {
-    switch (this) {
-      case Severity.information:
-        return describeEnum(this).capitalize();
-      case Severity.debug:
-        return describeEnum(this).capitalize();
-      case Severity.warning:
-        return describeEnum(this).capitalize();
-      case Severity.error:
-        return describeEnum(this).capitalize();
-      default:
-        return "Unknown";
-    }
-  }
+  String get messageName => EnumName(this).name.capitalize();
 }

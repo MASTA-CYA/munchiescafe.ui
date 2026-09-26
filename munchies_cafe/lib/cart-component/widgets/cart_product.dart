@@ -98,7 +98,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
               textAlign: TextAlign.start,
               style: Theme.of(context).textTheme.titleLarge?.merge(
                     TextStyle(
-                      fontFamily: FontFamily.PRIMARY,
+                      fontFamily: FontFamily.primary,
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.primary,
                     ),
@@ -162,7 +162,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
             _quantity.toString(),
             style: Theme.of(context).textTheme.bodyLarge?.merge(
                   TextStyle(
-                      fontFamily: FontFamily.PRIMARY,
+                      fontFamily: FontFamily.primary,
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.primary),
                 ),

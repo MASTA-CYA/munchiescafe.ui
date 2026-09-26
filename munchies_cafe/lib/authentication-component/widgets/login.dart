@@ -34,13 +34,11 @@ class _LoginWidget extends State<LoginWidget> {
                 flex: 1,
                 child: _buildUsernameTextField(),
               ),
-              // const Spacer(),
               const SizedBox(height: 16),
               Flexible(
                 flex: 1,
                 child: _buildPasswordTextField(),
               ),
-              // const SizedBox(height: 20),
               const Spacer(),
 
               Flexible(

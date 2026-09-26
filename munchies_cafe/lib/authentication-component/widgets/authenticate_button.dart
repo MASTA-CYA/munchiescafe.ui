@@ -20,7 +20,7 @@ class AuthenticateButtonWidget extends StatelessWidget {
             .style
             ?.backgroundColor
             ?.resolve(
-          {MaterialState.pressed},
+          {WidgetState.pressed},
         ),
         surfaceTintColor: Colors.transparent,
         foregroundColor: Colors.white,
@@ -37,9 +37,8 @@ class AuthenticateButtonWidget extends StatelessWidget {
         text,
         style: Theme.of(context).textTheme.titleLarge?.merge(
               const TextStyle(
-                fontFamily: FontFamily.PRIMARY,
+                fontFamily: FontFamily.primary,
                 color: Colors.white,
-                // fontSize: 18,
               ),
             ),
       ),

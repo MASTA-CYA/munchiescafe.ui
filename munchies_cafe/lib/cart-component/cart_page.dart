@@ -4,7 +4,7 @@ import 'package:munchies_cafe/cart-component/widgets/cart_button.dart';
 import 'package:munchies_cafe/cart-component/widgets/cart_product.dart';
 import 'package:munchies_cafe/common/constants.dart';
 import 'package:munchies_cafe/common/helpers/color_helper.dart';
-import 'package:munchies_cafe/common/themes/themes_common.dart';
+import 'package:munchies_cafe/common/theme/app_theme.dart';
 import 'package:munchies_cafe/common/widgets/appbar.dart';
 import 'package:munchies_cafe/menu-component/models/product_model.dart';
 import 'package:munchies_cafe/menu-component/models/product_variation_model.dart';
@@ -46,7 +46,7 @@ class _CartPage extends State<CartPage> {
         variations: [
           ProductVariation(
             name: 'Chocolate',
-            color: ThemesCommon.primaryColor,
+            color: AppColors.primary,
           ),
           ProductVariation(
             name: 'Vanilla',
@@ -88,7 +88,6 @@ class _CartPage extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget<CartPage>(title: _title),
-      // drawer: const CustomNavigationDrawer<CartPage>(),
       body: Container(
         margin: const EdgeInsets.symmetric(
           vertical: 10,
@@ -155,7 +154,7 @@ class _CartPage extends State<CartPage> {
       alignment: Alignment.bottomCenter,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
-        color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+        color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -179,7 +178,7 @@ class _CartPage extends State<CartPage> {
                     33.00 + 47.00,
                   ),
                   style: const TextStyle(
-                    fontFamily: FontFamily.PRIMARY,
+                    fontFamily: FontFamily.primary,
                     fontSize: 18,
                     color: Colors.green,
                   ),
@@ -195,37 +194,40 @@ class _CartPage extends State<CartPage> {
   Widget buildBottomButtonBar() {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: ButtonBar(
-        alignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CartButtonWidget(
-            icon: const Icon(
-              Icons.delete_sweep,
-              size: 24.5,
-            ),
-            text: 'Clear Cart',
-            color: Colors.red,
-            isPrimary: false,
-            onClicked: () async => {},
-          ),
-          CartButtonWidget(
-            icon: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              child: const ImageIcon(
-                ResizeImage(
-                  AssetImage('assets/images/wallet.png'),
-                  width: 70,
-                  height: 70,
-                  allowUpscaling: false,
-                ),
-                size: 19,
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: OverflowBar(
+          alignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CartButtonWidget(
+              icon: const Icon(
+                Icons.delete_sweep,
+                size: 24.5,
               ),
+              text: 'Clear Cart',
+              color: Colors.red,
+              isPrimary: false,
+              onClicked: () async => {},
             ),
-            text: 'Checkout',
-            isPrimary: false,
-            onClicked: () async => {},
-          ),
-        ],
+            CartButtonWidget(
+              icon: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                child: const ImageIcon(
+                  ResizeImage(
+                    AssetImage('assets/images/wallet.png'),
+                    width: 70,
+                    height: 70,
+                    allowUpscaling: false,
+                  ),
+                  size: 19,
+                ),
+              ),
+              text: 'Checkout',
+              isPrimary: false,
+              onClicked: () async => {},
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -240,23 +242,5 @@ class _CartPage extends State<CartPage> {
       curve: Curves.easeOut,
       duration: const Duration(milliseconds: 400),
     );
-  }
-
-  void _onProductSubtotalChanged(Product product, double subtotal) {
-    // CartProduct cp = lsProducts.firstWhere((p) => p.product == product);
-    // int index = lsProducts.indexOf(cp);
-    // cp.subtotal = subtotal;
-    // lsProducts[index] = cp;
-
-    _calcCartTotal();
-  }
-
-  void _calcCartTotal() {
-    double total = 0;
-    // for (CartProduct cp in lsProducts) {
-    //   total += cp.subtotal;
-    // }
-
-    _total.value = total;
   }
 }

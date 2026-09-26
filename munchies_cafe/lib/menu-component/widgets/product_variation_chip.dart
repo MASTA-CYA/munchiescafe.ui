@@ -50,7 +50,7 @@ class _ProductVariationChipWidgetState
                       widget.variations.color,
                       70,
                     )
-                  : Theme.of(context).colorScheme.background,
+                  : Theme.of(context).colorScheme.surface,
               borderRadius: const BorderRadius.all(
                 Radius.circular(45),
               ),

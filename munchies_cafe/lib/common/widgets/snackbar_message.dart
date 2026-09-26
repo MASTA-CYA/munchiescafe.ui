@@ -32,13 +32,13 @@ class SnackbarMessageWidget extends StatelessWidget {
           style: message.length > 35
               ? Theme.of(context).textTheme.bodySmall?.merge(
                     TextStyle(
-                      fontFamily: FontFamily.SECONDARY,
+                      fontFamily: FontFamily.secondary,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   )
               : Theme.of(context).textTheme.bodyMedium?.merge(
                     TextStyle(
-                      fontFamily: FontFamily.SECONDARY,
+                      fontFamily: FontFamily.secondary,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),

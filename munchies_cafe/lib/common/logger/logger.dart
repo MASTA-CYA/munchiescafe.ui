@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:munchies_cafe/common/logger/enums/severity_enum.dart';
-import 'package:munchies_cafe/common/logger/enums/tag_enum.dart';
 import 'package:munchies_cafe/common/logger/models/log_event_model.dart';
 import 'package:munchies_cafe/common/services/file_storage_service.dart';
 import 'package:munchies_cafe/message-component/models/message_severity_enum.dart';
@@ -24,17 +21,5 @@ class Logger {
         MessageSeverity.fromLogEvent(event.severity),
       );
     }
-  }
-
-  static Future<File> getLogFileAsync<T>() async {
-    await logAsync(
-      LogEvent<Logger>(
-        severity: Severity.information,
-        tag: Tag.service,
-        line: '$T requested the application log file',
-      ),
-    );
-
-    return await FileStorageService.getFileInstanceAsync<Logger>();
   }
 }

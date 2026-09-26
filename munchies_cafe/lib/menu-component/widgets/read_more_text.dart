@@ -33,7 +33,6 @@ class _ReadMoreTextWidget extends State<ReadMoreTextWidget> {
           Text(
             widget.text,
             maxLines: isExpanded ? 5 : 2,
-            // softWrap: true,
             overflow: TextOverflow.ellipsis,
             style: widget.style,
           ),
@@ -46,7 +45,7 @@ class _ReadMoreTextWidget extends State<ReadMoreTextWidget> {
                   style: Theme.of(context).textTheme.titleMedium?.merge(
                         TextStyle(
                           color: Theme.of(context).primaryColor,
-                          fontFamily: FontFamily.PRIMARY,
+                          fontFamily: FontFamily.primary,
                         ),
                       ),
                 ),

@@ -31,14 +31,9 @@ class _MessagesPage extends State<MessagesPage> {
           horizontal: Functions.horizontalScreenMargin(context),
           vertical: 10,
         ),
-        child:
-            // SingleChildScrollView(
-            //   physics: const BouncingScrollPhysics(),
-            //   child:
-            NotificationScaffoldWidget(
+        child: NotificationScaffoldWidget(
           child: _buildMessagesScaffold(),
         ),
-        // ),
       ),
     );
   }
@@ -91,21 +86,24 @@ class _MessagesPage extends State<MessagesPage> {
         ? const SizedBox.shrink()
         : Align(
             alignment: Alignment.bottomCenter,
-            child: ButtonBar(
-              alignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                MessageButtonWidget(
-                  isPrimary: false,
-                  icon: const Icon(Icons.menu_book_outlined),
-                  text: 'Read All',
-                  onPressed: () => _onReadAllMessagesPressed(),
-                ),
-                MessageButtonWidget(
-                  icon: const Icon(Icons.delete_sweep),
-                  text: 'Dismiss All',
-                  onPressed: () => _onDismissAllMessagesPressed(),
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: OverflowBar(
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MessageButtonWidget(
+                    isPrimary: false,
+                    icon: const Icon(Icons.menu_book_outlined),
+                    text: 'Read All',
+                    onPressed: () => _onReadAllMessagesPressed(),
+                  ),
+                  MessageButtonWidget(
+                    icon: const Icon(Icons.delete_sweep),
+                    text: 'Dismiss All',
+                    onPressed: () => _onDismissAllMessagesPressed(),
+                  ),
+                ],
+              ),
             ),
           );
   }

@@ -5,14 +5,7 @@ import 'package:munchies_cafe/common/logger/logger.dart';
 import 'package:munchies_cafe/common/logger/models/log_event_model.dart';
 import 'package:munchies_cafe/common/models/serializable_model.dart';
 
-extension StringNullableExtensions on String? {
-  bool isNullOrEmpty() => (this?.isEmpty ?? true) || isNull;
-}
-
 extension StringExtensions on String {
-  /// Returns an empty string
-  String get empty => '';
-
   /// Extension that checks if string a contains string b. [ignoreCase] defaults to true.
   bool containsIgnoreCase(String other, {bool ignoreCase = true}) =>
       toLowerCase().contains(RegExp(other.toLowerCase()));
@@ -48,10 +41,6 @@ extension ObjectExtensions on Object? {
   bool equals(Object? other) {
     return this == other;
   }
-}
-
-extension SerializableModelExtensions<T> on SerializableModel<T> {
-  // T get model => this.model;
 }
 
 extension SerializableListExtensions<T extends SerializableModel> on List<T> {

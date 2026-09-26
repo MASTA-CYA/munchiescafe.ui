@@ -57,7 +57,7 @@ class _AuthenticationPage extends State<AuthenticationPage> {
                                     .displayMedium
                                     ?.merge(
                                       TextStyle(
-                                        fontFamily: FontFamily.PRIMARY,
+                                        fontFamily: FontFamily.primary,
                                         color: Theme.of(context)
                                             .colorScheme
                                             .secondary,
@@ -106,7 +106,7 @@ class _AuthenticationPage extends State<AuthenticationPage> {
                         ),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.transparent.withOpacity(0.3),
+                            color: Colors.transparent.withValues(alpha: 0.3),
                             borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(20),
                             ),
@@ -124,7 +124,6 @@ class _AuthenticationPage extends State<AuthenticationPage> {
                               ),
                               Flexible(
                                 flex: 2,
-                                // alignment: Alignment.bottomCenter,
                                 child: _buildSocialMediaBar(),
                               ),
                             ],

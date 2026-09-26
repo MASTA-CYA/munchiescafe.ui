@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ProfileImageWidget extends StatelessWidget {
-  // final String imagePath;
   final bool? isEdit;
   final VoidCallback? onClicked;
 
   const ProfileImageWidget({
     super.key,
-    // required this.imagePath,
     this.isEdit = false,
     required this.onClicked,
   });

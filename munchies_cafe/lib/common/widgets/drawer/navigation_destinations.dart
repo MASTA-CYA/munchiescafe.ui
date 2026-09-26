@@ -136,7 +136,6 @@ class NavigationDestinationsWidget<T> extends StatelessWidget {
           height: 70,
           allowUpscaling: false,
         ),
-        // size: 20,
       ),
       title: Text(
         'Report Bug',
@@ -149,12 +148,12 @@ class NavigationDestinationsWidget<T> extends StatelessWidget {
     );
   }
 
-  void _navigateTo<T>(
+  void _navigateTo<P>(
     BuildContext context,
     Widget widget, {
     TransitionDirection direction = TransitionDirection.ltr,
   }) async {
-    PageNavigator.navigateTo<T>(
+    PageNavigator.navigateTo<P>(
       context,
       widget,
       direction: direction,

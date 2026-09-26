@@ -71,7 +71,7 @@ class _ProductWidget extends State<ProductWidget> {
               textAlign: TextAlign.start,
               style: Theme.of(context).textTheme.titleLarge?.merge(
                     TextStyle(
-                      fontFamily: FontFamily.PRIMARY,
+                      fontFamily: FontFamily.primary,
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.primary,
                     ),
@@ -151,23 +151,23 @@ class _ProductWidget extends State<ProductWidget> {
   }
 
   Widget _buildButtonBar() {
-    return ButtonBar(
-      alignment: MainAxisAlignment.spaceBetween,
-      children: [
-        InkWell(
-          onTap: () => widget.onAddToFavoritesPressed(widget.product),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              const Icon(
-                Icons.favorite_border,
-                color: Colors.red,
-                // size: 26,
-              ),
-              const SizedBox(width: 8),
-              Container(
-                // margin: const EdgeInsets.only(top: 4.5),
-                child: Text(
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: OverflowBar(
+        alignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () => widget.onAddToFavoritesPressed(widget.product),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const Icon(
+                  Icons.favorite_border,
+                  color: Colors.red,
+                ),
+                const SizedBox(width: 8),
+                Text(
                   "ADD TO FAVORITES",
                   style: Theme.of(context).textTheme.bodyMedium?.merge(
                         TextStyle(
@@ -175,38 +175,39 @@ class _ProductWidget extends State<ProductWidget> {
                         ),
                       ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        InkWell(
-          onTap: () => widget.onAddToCartPressed(widget.product),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              ImageIcon(
-                const ResizeImage(
-                  AssetImage('assets/images/cart.png'),
-                  width: 70,
-                  height: 70,
-                  allowUpscaling: false,
+          InkWell(
+            onTap: () => widget.onAddToCartPressed(widget.product),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                ImageIcon(
+                  const ResizeImage(
+                    AssetImage('assets/images/cart.png'),
+                    width: 70,
+                    height: 70,
+                    allowUpscaling: false,
+                  ),
+                  color: Theme.of(context).iconTheme.color,
+                  size: 20,
                 ),
-                color: Theme.of(context).iconTheme.color,
-                size: 20,
-              ),
-              const SizedBox(width: 10),
-              Text(
-                "ADD TO CART",
-                style: Theme.of(context).textTheme.bodyMedium?.merge(
-                      TextStyle(
-                        color: Theme.of(context).primaryColor,
+                const SizedBox(width: 10),
+                Text(
+                  "ADD TO CART",
+                  style: Theme.of(context).textTheme.bodyMedium?.merge(
+                        TextStyle(
+                          color: Theme.of(context).primaryColor,
+                        ),
                       ),
-                    ),
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

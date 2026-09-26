@@ -4,15 +4,8 @@ enum NotificationType {
 }
 
 extension NotificationTypeExtension on NotificationType {
-  String get icon => _getNotificationIcon();
-
-  String _getNotificationIcon() {
-    switch (this) {
-      case NotificationType.favorite:
-        return 'assets/images/favorite.png';
-      case NotificationType.message:
-      default:
-        return 'assets/images/message.png';
-    }
-  }
+  String get icon => switch (this) {
+        NotificationType.favorite => 'assets/images/favorite.png',
+        NotificationType.message => 'assets/images/message.png',
+      };
 }
